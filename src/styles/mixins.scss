@@ -1,0 +1,48 @@
+@use 'variables' as *;
+
+@mixin card {
+  background: var(--color-bg-card);
+  border-radius: $radius-lg;
+  box-shadow: var(--shadow-card);
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+@mixin card-hover {
+  &:hover {
+    box-shadow: var(--shadow-card-hover);
+    transform: translateY(-2px);
+  }
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin button-dark {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--color-accent-dark);
+  color: var(--color-bg-white);
+  border: none;
+  border-radius: 999px;
+  padding: 14px 24px;
+  font-family: $font-body;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.15s ease;
+
+  &:hover { background: var(--color-accent-dark-hover); }
+  &:active { transform: scale(0.97); }
+}
+
+@mixin respond($breakpoint) {
+  @if $breakpoint == mobile {
+    @media (max-width: $bp-mobile) { @content; }
+  } @else if $breakpoint == tablet {
+    @media (max-width: $bp-tablet) { @content; }
+  }
+}
