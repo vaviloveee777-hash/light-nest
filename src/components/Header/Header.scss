@@ -1,0 +1,26 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+    &__icon-badge {
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--color-bg-white);
+      border-radius: $radius-md;
+    }
+
+    &__logo {
+      display: flex;
+      flex-direction: column;
+    }
+  }
