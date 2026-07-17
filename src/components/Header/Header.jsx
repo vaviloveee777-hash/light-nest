@@ -1,13 +1,6 @@
 import { Sun, User, SunMoon} from 'lucide-react'
 import './Header.scss'
-
-
-const NAV_ITEMS = [
-  {id: 'home', label: 'Home' },
-  {id: 'todo', label: 'Todo' },
-  {id: 'notes', label: 'Notes' },
-  {id: 'weather', label: 'Weather' },
-]
+import HeaderNav from "@/components/Header/HeaderNav.jsx";
 
 function Header (props) {
   const {
@@ -18,7 +11,7 @@ function Header (props) {
   return (
     <header className="header">
       <div className="header__brand">
-        <div className="header__icon-badge">
+        <div className="header__icon-badge header__icon-sun">
           <Sun size={20} />
         </div>
       <div className="header__logo">
@@ -26,19 +19,6 @@ function Header (props) {
         <span className="header__tagline">YOUR DAY, ILLUMINATED.</span>
       </div>
       </div>
-      <nav className="header__nav">
-        {NAV_ITEMS.map((item) => {
-         return (
-           <button
-             key={item.id}
-             onClick={() => onTabChange(item.id)}
-             className={`header__nav-button ${item.id === activeTab ? 'header__nav-button--active' : ''}`}
-             >
-             {item.label}
-           </button>
-         )
-          })}
-      </nav>
       <div className="header__actions">
         <div className="header__icon-badge header__icon-SunMoon">
           <SunMoon size={20} />
@@ -47,6 +27,10 @@ function Header (props) {
           <User size={20} />
         </div>
       </div>
+      <HeaderNav
+        activeTab={activeTab}
+        onTabChange={onTabChange}
+      />
     </header>
   )
 }
