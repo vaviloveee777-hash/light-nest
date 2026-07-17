@@ -23,7 +23,13 @@
     justify-content: center;
     background: var(--color-bg-white);
     border-radius: $radius-md;
+
+    &:hover {
+      background-color: #FADFAD;
+    }
   }
+
+
 
   &__logo {
     display: flex;
@@ -66,12 +72,6 @@
       text-underline-offset: 10px;
       color: #78766f;
     }
-  }
-
-  &__nav-button--active {
-    text-decoration: underline;
-    text-decoration-thickness: 1.5px;
-    text-underline-offset: 10px;
   }
   }
 
