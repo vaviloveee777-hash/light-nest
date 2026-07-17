@@ -1,26 +1,78 @@
+@use '@/styles/variables' as *;
+
 .header {
   display: flex;
+  position: relative;
   justify-content: space-between;
   align-items: center;
+  margin-top: 20px;
+  margin-right: 30px;
+  margin-left: 30px;
 
   &__brand {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 20px;
   }
 
-    &__icon-badge {
-      width: 44px;
-      height: 44px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: var(--color-bg-white);
-      border-radius: $radius-md;
+  &__icon-badge {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-bg-white);
+    border-radius: $radius-md;
+  }
+
+  &__logo {
+    display: flex;
+    flex-direction: column;
+  }
+
+    &__title {
+      font-size: 25px;
+      font-weight: 400;
     }
 
-    &__logo {
-      display: flex;
-      flex-direction: column;
+    &__tagline {
+      font-size: 8px;
+      letter-spacing: 2px;
+    }
+
+  &__nav {
+    display: flex;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    gap: 40px;
+  }
+   &__actions {
+     display: flex;
+     align-items: center;
+     gap: 15px;
+
+   }
+
+  &__nav-button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    transition: all 0.2s;
+
+    &:hover, &--active {
+      text-decoration: underline;
+      text-decoration-thickness: 1.5px;
+      text-underline-offset: 10px;
+      color: #78766f;
     }
   }
+
+  &__nav-button--active {
+    text-decoration: underline;
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 10px;
+  }
+  }
+
+

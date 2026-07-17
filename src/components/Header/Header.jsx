@@ -1,4 +1,4 @@
-import { Sun } from 'lucide-react'
+import { Sun, User, SunMoon} from 'lucide-react'
 import './Header.scss'
 
 
@@ -23,22 +23,30 @@ function Header (props) {
         </div>
       <div className="header__logo">
         <span className="header__title">Light Nest</span>
-        <span className="header__tagline">Your day, illuminated.</span>
+        <span className="header__tagline">YOUR DAY, ILLUMINATED.</span>
       </div>
       </div>
-      <nav>
+      <nav className="header__nav">
         {NAV_ITEMS.map((item) => {
          return (
            <button
              key={item.id}
              onClick={() => onTabChange(item.id)}
-             className={item.id === activeTab ? 'active' : ''}
+             className={`header__nav-button ${item.id === activeTab ? 'header__nav-button--active' : ''}`}
              >
              {item.label}
            </button>
          )
           })}
       </nav>
+      <div className="header__actions">
+        <div className="header__icon-badge header__icon-SunMoon">
+          <SunMoon size={20} />
+        </div>
+        <div className="header__icon-badge header__icon-User">
+          <User size={20} />
+        </div>
+      </div>
     </header>
   )
 }
