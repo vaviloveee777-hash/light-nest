@@ -7,10 +7,16 @@ const NAV_ITEMS = [
   {id: 'weather', label: 'Weather' },
 ]
 
-const HeaderNav = () => {
+const HeaderNav = (props) => {
+  const {
+    isOpen,
+  } = props
 
   return (
-    <nav className="header__nav">
+    <nav className={
+      `header__nav ${isOpen 
+        ? 'header__nav--open' : ''}`
+    }>
       {NAV_ITEMS.map((item) => {
         return (
           <NavLink
