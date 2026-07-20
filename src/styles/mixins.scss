@@ -44,5 +44,7 @@
     @media (max-width: $bp-mobile) { @content; }
   } @else if $breakpoint == tablet {
     @media (max-width: $bp-tablet) { @content; }
+  } @else if $breakpoint == small {
+    @media (max-width: $bp-small) { @content; }
   }
 }
