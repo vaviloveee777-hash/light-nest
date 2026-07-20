@@ -23,6 +23,9 @@ function Header (props) {
         <span className="header__title">Light Nest</span>
         <span className="header__tagline">YOUR DAY, ILLUMINATED.</span>
       </div>
+        <HeaderNav
+          isOpen={isOpen}
+        />
       </div>
       <div className="header__actions">
         <div className="header__icon-badge header__icon-sun-moon">
@@ -35,9 +38,6 @@ function Header (props) {
           <BurgerButton isOpen={isOpen} onClick={() => setOpen(!isOpen)} />
         </div>
       </div>
-      <HeaderNav
-        isOpen={isOpen}
-      />
     </header>
   )
 }
