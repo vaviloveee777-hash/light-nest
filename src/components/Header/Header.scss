@@ -1,4 +1,5 @@
 @use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
 
 .header {
   display: flex;
@@ -9,15 +10,22 @@
   margin-right: 30px;
   margin-left: 30px;
 
+  @include respond(mobile) {
+    margin-right: 12px;
+    margin-left: 12px;
+  }
+
   &__brand {
     display: flex;
     align-items: center;
     gap: 20px;
+
   }
 
   &__icon-badge {
     width: 44px;
     height: 44px;
+    flex-shrink: 0;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -27,24 +35,37 @@
     &:hover {
       background-color: #FADFAD;
     }
+
+    @include respond(mobile) {
+      width: 36px;
+      height: 36px;
+    }
   }
-
-
 
   &__logo {
     display: flex;
     flex-direction: column;
   }
 
-    &__title {
-      font-size: 25px;
-      font-weight: 400;
-    }
+  &__title {
+    font-size: 25px;
+    font-weight: 400;
+    white-space: nowrap;
 
-    &__tagline {
-      font-size: 8px;
-      letter-spacing: 2px;
+    @include respond(mobile) {
+      font-size: 18px;
     }
+  }
+
+  &__tagline {
+    font-size: 8px;
+    letter-spacing: 2px;
+    white-space: nowrap;
+
+    @include respond(mobile) {
+      font-size: 7px;
+    }
+  }
 
   &__nav {
     display: flex;
@@ -52,13 +73,37 @@
     left: 50%;
     transform: translateX(-50%);
     gap: 40px;
-  }
-   &__actions {
-     display: flex;
-     align-items: center;
-     gap: 15px;
 
-   }
+    @include respond(mobile) {
+      display: none;
+
+      &--open {
+        display: flex;
+        position: fixed;
+        top: 0;
+        left: 0;
+        transform: none;
+        width: 100vw;
+        height: 100vh;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+        background: #1e1e1e;
+        z-index: 100;
+      }
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    @include respond(mobile) {
+      gap: 10px;
+    }
+  }
 
   &__nav-button {
     border: none;
@@ -73,6 +118,19 @@
       color: #78766f;
     }
   }
+
+  &__burger-button {
+    display: none;
+    position: relative;
+    z-index: 101;
+    flex-shrink: 0;
+
+    @include respond(mobile) {
+      display: block;
+    }
+
+    @include respond(small) {
+      margin-right: 5px;
+    }
   }
-
-
+}
