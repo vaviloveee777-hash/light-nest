@@ -12,6 +12,7 @@
   background: var(--color-bg-white);
   border-radius: $radius-md;
   margin-right: 10px;
+  margin-left: -10px;
 
   &:hover {
     background-color: #FADFAD;
@@ -20,5 +21,6 @@
   @include respond(mobile) {
     width: 36px;
     height: 36px;
+    margin-left: 1px;
   }
 }

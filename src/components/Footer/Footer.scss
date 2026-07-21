@@ -1,0 +1,25 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.footer {
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--color-text-secondary);
+  padding: 20px 30px;
+
+  &__info {
+    display: flex;
+  }
+
+  &__social {
+    display: flex;
+    gap: 10px;
+  }
+
+  &__links {
+    display: flex;
+    gap: 10px;
+  }
+}
