@@ -5,9 +5,19 @@
   display: flex;
   position: relative;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   color: var(--color-text-secondary);
   padding: 20px 30px;
+
+  @include respond(tablet) {
+    gap: 15px;
+  }
+
+  @include respond(mobile) {
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+  }
 
   &__info {
     display: flex;
