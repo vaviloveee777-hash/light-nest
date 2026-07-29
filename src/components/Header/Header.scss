@@ -59,7 +59,7 @@
       transform: none;
     }
 
-    @include respond(mobile) {
+    @media (max-width: 650px) {
       display: none;
 
       &--open {
@@ -110,7 +110,7 @@
     z-index: 101;
     flex-shrink: 0;
 
-    @include respond(mobile) {
+    @media (max-width: 650px) {
       display: block;
     }
 
