@@ -1,0 +1,106 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.summary-card {
+  @include card;
+  @include card-hover;
+  padding: 24px;
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  @media (max-width: 720px) {
+    padding: 14px;
+    gap: 6px;
+    border-radius: $radius-md;
+  }
+
+  @include respond(mobile) {
+    padding: 10px;
+    gap: 4px;
+    border-radius: $radius-sm;
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+
+    p {
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--color-text-main);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+
+      @media (max-width: 720px) {
+        font-size: 13px;
+      }
+
+      @include respond(mobile) {
+        font-size: 11px;
+      }
+    }
+  }
+
+  &__number {
+    font-family: $font-display;
+    font-size: 32px;
+    font-weight: 500;
+    color: var(--color-text-main);
+
+    @media (max-width: 720px) {
+      font-size: 22px;
+    }
+
+    @include respond(mobile) {
+      font-size: 18px;
+    }
+  }
+
+  &__subtitle {
+    font-size: 14px;
+    color: var(--color-text-secondary);
+    line-height: 1.4;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    @media (max-width: 720px) {
+      font-size: 11px;
+    }
+
+    @include respond(mobile) {
+      font-size: 9px;
+    }
+  }
+
+  &__location {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-top: 2px;
+  }
+
+  &__button {
+    @include button-dark;
+    margin-top: auto;
+    align-self: flex-start;
+    white-space: nowrap;
+
+    @media (max-width: 720px) {
+      padding: 8px 12px;
+      font-size: 11px;
+      gap: 4px;
+    }
+
+    @include respond(mobile) {
+      padding: 6px 8px;
+      font-size: 9px;
+      gap: 3px;
+    }
+  }
+}
