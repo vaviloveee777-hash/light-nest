@@ -32,19 +32,37 @@
     min-height: 70vh;
     height: auto;
     text-align: center;
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.75) 0%,
+        rgba(255, 255, 255, 0.35) 45%,
+        rgba(255, 255, 255, 0.1) 100%
+      );
+      pointer-events: none;
+    }
   }
 
   &__title {
+    position: relative;
+    z-index: 1;
     font-size: 40px;
     font-weight: 400;
 
     @include respond(mobile) {
       font-size: 28px;
       text-align: center;
+      font-weight: 800;
     }
   }
 
   &__subtitle {
+    position: relative;
+    z-index: 1;
     color: var(--color-text-secondary);
     font-size: 20px;
     margin-top: 10px;
@@ -52,6 +70,9 @@
     @include respond(mobile) {
       font-size: 16px;
       text-align: center;
+      color: #3a3a3a;
+      text-shadow: 0 1px 4px rgba(255, 255, 255, 0.8);
+      font-weight: 500;
     }
   }
 
@@ -68,6 +89,8 @@
     min-width: 180px;
     margin-top: 25px;
     cursor: pointer;
+    position: relative;
+    z-index: 1;
 
     @include respond(mobile) {
       margin-top: 20px;
