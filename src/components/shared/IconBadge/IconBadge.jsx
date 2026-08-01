@@ -1,6 +1,6 @@
 import './IconBadge.scss'
 
-function IconBadge({ icon, className = '' }) {
+const IconBadge = ({ icon, className = '' }) => {
   return (
     <div className={`icon-badge ${className}`}>
       {icon}

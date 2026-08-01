@@ -5,7 +5,7 @@ import {BrowserRouter} from "react-router-dom";
 import './App.scss'
 
 
-function App() {
+const App = () => {
   return (
     <BrowserRouter>
       <Header />

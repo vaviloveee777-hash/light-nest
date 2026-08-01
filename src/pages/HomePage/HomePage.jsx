@@ -3,7 +3,7 @@ import './HomePage.scss'
 import SummaryCard from '@/components/shared/SummaryCard/index.js'
 import {ListChecks, NotebookText, CloudSun, MapPin} from 'lucide-react'
 
-function HomePage() {
+const HomePage = () => {
   return (
     <div className="home__hero-section">
       <Hero />

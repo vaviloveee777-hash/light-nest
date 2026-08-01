@@ -4,7 +4,7 @@ import {SiGithub} from '@icons-pack/react-simple-icons';
 import {SiTelegram} from '@icons-pack/react-simple-icons';
 import {Mail} from "lucide-react";
 
-function Footer() {
+const Footer = () => {
 
   return (
     <footer className="footer">

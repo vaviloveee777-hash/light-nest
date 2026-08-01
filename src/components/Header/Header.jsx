@@ -5,7 +5,7 @@ import BurgerButton from "@/components/Header/BurgerButton/BurgerButton.jsx";
 import HeaderNav from "@/components/Header/HeaderNav.jsx";
 import IconBadge from "@/components/shared/IconBadge/IconBadge.jsx";
 
-function Header (props) {
+const Header = (props) => {
   const {} = props
 
   const [isOpen, setOpen] = useState(false)
