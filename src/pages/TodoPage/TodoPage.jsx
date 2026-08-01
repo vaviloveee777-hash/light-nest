@@ -8,6 +8,14 @@ const TodoPage = () => {
     { id: 2, title: " не купил", isDone: true },
     { id: 3, title: "забыл", isDone: true },])
 
+  const [newTodoTitle, setTodoTitle] = useState('')
+
+  const addTodo = () => {
+    const newTodo = { id: Date.now(), title: newTodoTitle, isDone: false }
+    setTodos([...todos, newTodo])
+    setTodoTitle('')
+  }
+
   const toggleTodo = (id) => {
     setTodos(
       todos.map((todo) => todo.id ===id
@@ -17,6 +25,11 @@ const TodoPage = () => {
 
   return (
     <div className="todo__main-section">
+      <input
+        type="text"
+        value={newTodoTitle}
+        onChange={(event) => setTodoTitle(event.target.value)} />
+      <button onClick={addTodo}> Add Task </button>
       <div className="todo__list">
         {todos.map((todo) => (
           <div key={todo.id} className="todo__item">
