@@ -28,6 +28,10 @@
     gap: 10px;
     min-width: 0;
 
+    @include respond(mobile) {
+      gap: 2px;
+    }
+
     p {
       font-size: 16px;
       font-weight: 500;
@@ -41,7 +45,7 @@
       }
 
       @include respond(mobile) {
-        font-size: 11px;
+        font-size: 10px;
       }
     }
   }
@@ -101,6 +105,8 @@
       padding: 6px 8px;
       font-size: 9px;
       gap: 3px;
+      width: 100%;
+      justify-content: center;
     }
   }
 }

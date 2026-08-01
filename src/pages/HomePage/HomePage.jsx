@@ -29,7 +29,7 @@ function HomePage() {
         <SummaryCard
           icon={<CloudSun size={20} />}
           title="Weather"
-          number={23}
+          number="23°C"
           subtitle={
             <>
               Cloudy
