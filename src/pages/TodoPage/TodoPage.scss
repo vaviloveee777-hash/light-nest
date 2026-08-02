@@ -3,55 +3,52 @@
 
 .todo {
   &__main-section {
-    max-width: 700px;
-    margin: 60px auto;
-    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+    padding: 60px 20px;
 
     @include respond(mobile) {
-      margin: 30px auto;
-      padding: 0 16px;
+      padding: 30px 16px;
     }
   }
 
-  &__list {
+  &__card {
+    @include card;
+    width: 100%;
+    max-width: 480px;
+    padding: 32px;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 16px;
+
+    @include respond(mobile) {
+      padding: 20px;
+    }
   }
 
-  &__item {
-    @include card;
+  &__heading {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 8px;
+  }
+
+  &__form {
     display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 16px 20px;
-  }
-
-  &__checkbox {
-    width: 20px;
-    height: 20px;
-    flex-shrink: 0;
-    cursor: pointer;
-    accent-color: var(--color-accent-dark);
-  }
-
-  &__title {
-    font-size: 16px;
-    color: var(--color-text-main);
-  }
-
-  &__item:has(&__checkbox:checked) &__title {
-    text-decoration: line-through;
-    color: var(--color-text-muted);
+    gap: 10px;
   }
 
   &__input {
+    flex: 1;
     padding: 10px 14px;
     border: 1px solid var(--color-border);
     border-radius: $radius-sm;
     font-size: 14px;
     color: var(--color-text-main);
     background: var(--color-bg-white);
+
+    &::placeholder {
+      color: var(--color-text-muted);
+    }
 
     &--error {
       border-color: #d64545;
@@ -60,5 +57,141 @@
         outline-color: #d64545;
       }
     }
+
+    &--search {
+      padding-left: 36px;
+    }
   }
-}
+
+  &__add-button {
+    @include button-dark;
+    padding: 10px 18px;
+    font-size: 14px;
+  }
+
+  &__error {
+    font-size: 13px;
+    color: #d64545;
+    margin-top: -8px;
+  }
+
+  &__search {
+    position: relative;
+  }
+
+  &__search-icon {
+    position: absolute;
+    top: 50%;
+    left: 12px;
+    transform: translateY(-50%);
+    color: var(--color-text-muted);
+    pointer-events: none;
+  }
+
+  &__counter {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-text-main);
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  &__action-button {
+    flex: 1;
+    padding: 10px 14px;
+    border: none;
+    border-radius: $radius-sm;
+    background: var(--color-accent-dark);
+    color: var(--color-bg-white);
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    transition: background 0.2s ease, transform 0.15s ease;
+
+    &:hover {
+      background: var(--color-accent-dark-hover);
+    }
+
+    &:active {
+      transform: scale(0.97);
+    }
+
+    &--danger {
+      background: #e06565;
+
+      &:hover {
+        background: #b83a3a;
+      }
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  &__empty {
+    text-align: center;
+    color: var(--color-text-muted);
+    font-size: 14px;
+    padding: 12px 0;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    border-radius: $radius-sm;
+    background: var(--color-bg-white);
+    border: 1px solid var(--color-border);
+  }
+
+  &__checkbox {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    cursor: pointer;
+    accent-color: var(--color-accent-dark);
+  }
+
+  &__title {
+    flex: 1;
+    font-size: 14px;
+    color: var(--color-text-main);
+    word-break: break-word;
+  }
+
+  &__item:has(&__checkbox:checked) &__title {
+    text-decoration: line-through;
+    color: var(--color-text-muted);
+  }
+
+  &__delete {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--color-text-muted);
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: #d64545;
+    }
+  }
+
+  &__break {
+    display: block;
+  }
+  }
