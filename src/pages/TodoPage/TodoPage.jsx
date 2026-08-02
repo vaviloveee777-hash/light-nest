@@ -1,14 +1,13 @@
+import useLocalStorage from "@/hooks/useLocalStorage.js";
 import './TodoPage.scss'
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { X, Search, Trash2 } from 'lucide-react'
 
 const TodoPage = () => {
 
-  const [todos, setTodos] = useState([
-    { id: 1, title: "купить молоко", isDone: false },
-    { id: 2, title: "не купил", isDone: true },
-    { id: 3, title: "забыл", isDone: true },
-  ])
+  const { save, load } = useLocalStorage('todos')
+
+  const [todos, setTodos] = useState(() => load() || [])
 
   const [newTodoTitle, setTodoTitle] = useState('')
 
@@ -16,6 +15,7 @@ const TodoPage = () => {
     if (!newTodoTitle.trim()) {
       return
     }
+
     const newTodo = { id: Date.now(), title: newTodoTitle, isDone: false }
     setTodos([...todos, newTodo])
     setTodoTitle('')
@@ -38,6 +38,10 @@ const TodoPage = () => {
     todo.title.includes(searchQuery)
   )
 
+  useEffect(() => {
+    save(todos)
+  }, [todos])
+
   const doneCount = todos.filter(todo => todo.isDone).length
 
   const titleError =
@@ -59,6 +63,7 @@ const TodoPage = () => {
   const clearAllTodos = () => {
     setTodos([])
   }
+
 
   return (
     <div className="todo__main-section">
