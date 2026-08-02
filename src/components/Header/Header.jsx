@@ -1,4 +1,4 @@
-import {useState} from "react";
+import { useState, useEffect } from "react";
 import { Sun, User, SunMoon} from 'lucide-react'
 import './Header.scss'
 import BurgerButton from "@/components/Header/BurgerButton/BurgerButton.jsx";
@@ -9,6 +9,15 @@ const Header = (props) => {
   const {} = props
 
   const [isOpen, setOpen] = useState(false)
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+  }, [isOpen])
+
 
 
   return (
