@@ -1,4 +1,5 @@
 import './SummaryCard.scss'
+import { NavLink } from 'react-router-dom'
 import IconBadge from "@/components/shared/IconBadge/index.js";
 import {MoveRight} from "lucide-react";
 
@@ -24,10 +25,12 @@ const SummaryCard = (props) => {
     <div className="summary-card__subtitle">
       {subtitle}
     </div>
-    <button className="summary-card__button">
+    <NavLink
+      to={to}
+       className="summary-card__button">
       {button}
       <MoveRight size={20} />
-    </button>
+    </NavLink>
   </div>
   )
 }
