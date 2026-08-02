@@ -5,7 +5,7 @@
   display: flex;
   position: relative;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
   color: var(--color-text-secondary);
   padding: 20px 30px;
 
@@ -32,4 +32,19 @@
     display: flex;
     gap: 10px;
   }
-}
+
+  &__break {
+    display: none;
+
+    @media (max-width: 715px) and (min-width: 480px) {
+      display: block;
+    }
+  }
+
+  @media (max-width: 570px) and (min-width: 480px) {
+    font-size: 12px;
+    padding: 16px 20px;
+    gap: 8px;
+  }
+  }
+

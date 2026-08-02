@@ -9,7 +9,9 @@ const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer__info">
-        <span> © 2024 Light Nest. All rights reserved. </span>
+        <span> © 2024 Light Nest.
+          <br className="footer__break" />
+          All rights reserved. </span>
       </div>
       <div className="footer__social">
         <a
