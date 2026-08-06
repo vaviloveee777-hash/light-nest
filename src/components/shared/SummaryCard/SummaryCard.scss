@@ -20,6 +20,7 @@
     padding: 10px;
     gap: 4px;
     border-radius: $radius-sm;
+    margin-bottom: 20px;
   }
 
   &__header {
@@ -30,6 +31,7 @@
 
     @include respond(mobile) {
       gap: 2px;
+
     }
 
     p {
@@ -94,6 +96,8 @@
     margin-top: auto;
     align-self: flex-start;
     white-space: nowrap;
+    color: black;
+    font-size: 14px;
 
     @media (max-width: 720px) {
       padding: 8px 12px;
