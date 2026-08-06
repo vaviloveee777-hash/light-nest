@@ -1,40 +1,80 @@
 @use '@/styles/variables' as *;
 @use '@/styles/mixins' as *;
 
-.todo {
-  &__main-section {
-    display: flex;
-    justify-content: center;
-    padding: 60px 20px;
-
-    @include respond(mobile) {
-      padding: 30px 16px;
-    }
-  }
-
-  &__card {
-    @include card;
-    width: 100%;
-    max-width: 480px;
-    padding: 32px;
+.todo-page {
+  &__hero {
+    position: relative;
+    min-height: 450px;
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    justify-content: center;
+    background-image: url(../../assets/background-desktop.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding-left: clamp(60px, -312px + 10.2vw, 500px);
+    padding-bottom: 200px;
+    overflow: hidden;
+
+    @include respond(tablet) {
+      padding-left: 60px;
+      min-height: 420px;
+    }
 
     @include respond(mobile) {
-      padding: 20px;
+      background-image: url(../../assets/background-mobile.png);
+      padding-left: 20px;
+      padding-right: 20px;
+      min-height: 380px;
+      text-align: center;
+      align-items: center;
     }
   }
 
-  &__heading {
-    text-align: center;
-    font-size: 24px;
-    margin-bottom: 8px;
+  &__title {
+    font-family: $font-display;
+    font-size: 40px;
+    font-weight: 500;
+    position: relative;
+    z-index: 1;
+    text-shadow: 0 1px 6px rgba(255, 255, 255, 0.2), 0 1px 2px rgba(255, 255, 255, 0.9);
+
+    @include respond(mobile) {
+      font-size: 30px;
+    }
+  }
+
+  &__subtitle {
+    color: #37230d;
+    font-size: 15px;
+    margin-top: 6px;
+    position: relative;
+    z-index: 1;
+    font-weight: 800;
+  }
+
+  &__main {
+    max-width: 1900px;
+    margin: -23px auto 0;
+    padding: 24px 20px 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    background-color: #F0E9E0;
+
+    @include respond(mobile) {
+      padding: 40px 16px 40px;
+    }
   }
 
   &__form {
     display: flex;
     gap: 10px;
+    background: var(--color-bg-white);
+    padding: 12px;
+    border-radius: $radius-md;
+    box-shadow: var(--shadow-card);
+
   }
 
   &__input {
@@ -44,7 +84,8 @@
     border-radius: $radius-sm;
     font-size: 14px;
     color: var(--color-text-main);
-    background: var(--color-bg-white);
+    background: var(--color-bg-cream);
+
 
     &::placeholder {
       color: var(--color-text-muted);
@@ -57,16 +98,18 @@
         outline-color: #d64545;
       }
     }
-
-    &--search {
-      padding-left: 36px;
-    }
   }
 
   &__add-button {
     @include button-dark;
-    padding: 10px 18px;
+    padding: 10px 20px;
     font-size: 14px;
+    white-space: nowrap;
+
+    @include respond(mobile) {
+      font-size: 12px;
+      padding: 5px 10px;
+    }
   }
 
   &__error {
@@ -75,8 +118,25 @@
     margin-top: -8px;
   }
 
+  &__toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    background: var(--color-bg-white);
+    padding: 12px;
+    border-radius: $radius-md;
+    box-shadow: var(--shadow-card);
+
+    @include respond(mobile) {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  }
+
   &__search {
     position: relative;
+    flex: 1;
   }
 
   &__search-icon {
@@ -88,72 +148,62 @@
     pointer-events: none;
   }
 
-  &__counter {
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--color-text-main);
+  &__input--search {
+    padding-left: 36px;
+    width: 100%;
   }
 
-  &__actions {
+  &__tabs {
     display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
+    gap: 6px;
+    flex-shrink: 0;
+
+    @include respond(mobile) {
+      justify-content: center;
+      gap: 15px;
+    }
   }
 
-  &__action-button {
-    flex: 1;
-    padding: 10px 14px;
+  &__tab {
     border: none;
-    border-radius: $radius-sm;
-    background: var(--color-accent-dark);
-    color: var(--color-bg-white);
+    background: var(--color-bg-cream);
+    padding: 8px 14px;
     font-size: 13px;
-    font-weight: 500;
+    border-radius: $radius-sm;
     cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-    transition: background 0.2s ease, transform 0.15s ease;
+    color: var(--color-text-secondary);
+    transition: background 0.2s ease, color 0.2s ease;
 
     &:hover {
-      background: var(--color-accent-dark-hover);
+      color: var(--color-text-main);
     }
 
-    &:active {
-      transform: scale(0.97);
-    }
-
-    &--danger {
-      background: #e06565;
-
-      &:hover {
-        background: #b83a3a;
-      }
+    &--active {
+      background: var(--color-accent-dark);
+      color: var(--color-bg-white);
+      font-weight: 500;
     }
   }
 
   &__list {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 8px;
   }
 
   &__empty {
     text-align: center;
     color: var(--color-text-muted);
     font-size: 14px;
-    padding: 12px 0;
+    padding: 24px 0;
   }
 
   &__item {
+    @include card;
     display: flex;
     align-items: center;
     gap: 12px;
-    padding: 12px 14px;
-    border-radius: $radius-sm;
-    background: var(--color-bg-white);
-    border: 1px solid var(--color-border);
+    padding: 12px 16px;
   }
 
   &__checkbox {
@@ -164,14 +214,14 @@
     accent-color: var(--color-accent-dark);
   }
 
-  &__title {
+  &__item-title {
     flex: 1;
     font-size: 14px;
     color: var(--color-text-main);
     word-break: break-word;
   }
 
-  &__item:has(&__checkbox:checked) &__title {
+  &__item:has(&__checkbox:checked) &__item-title {
     text-decoration: line-through;
     color: var(--color-text-muted);
   }
@@ -191,7 +241,50 @@
     }
   }
 
-  &__break {
-    display: block;
+  &__footer-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 4px;
   }
+
+  &__counter {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--color-text-main);
   }
+
+  &__footer-buttons {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+
+    @include respond(mobile) {
+      justify-content: center;
+    }
+  }
+
+  &__small-button {
+    border: none;
+    border-radius: $radius-sm;
+    padding: 8px 14px;
+    font-size: 12px;
+    cursor: pointer;
+    background: var(--color-bg-card);
+    color: var(--color-text-main);
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    transition: background 0.2s ease;
+
+    &:hover {
+      background: var(--color-border);
+    }
+
+    &--danger {
+      color: #d64545;
+    }
+  }
+}
