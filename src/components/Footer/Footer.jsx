@@ -9,7 +9,7 @@ const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer__info">
-        <span> © 2024 Light Nest.
+        <span> © 2026 Light Nest.
           <br className="footer__break" />
           All rights reserved. </span>
       </div>
@@ -20,7 +20,7 @@ const Footer = () => {
           rel="noopener noreferrer"
         >
           <IconBadge
-            icon={<SiGithub size={20} />}
+            icon={<SiGithub size={15} />}
             className="icon-badge--git-hub"
           />
         </a>
@@ -30,7 +30,7 @@ const Footer = () => {
           rel="noopener noreferrer"
         >
           <IconBadge
-            icon={<SiTelegram size={20} />}
+            icon={<SiTelegram size={15} />}
             className="icon-badge--telegram"
           />
         </a>
@@ -38,7 +38,7 @@ const Footer = () => {
           href="mailto:vaviloveee777@gmail.com"
         >
           <IconBadge
-            icon={<Mail size={20} />}
+            icon={<Mail size={15} />}
             className="icon-badge--mail"
           />
         </a>

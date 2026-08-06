@@ -6,7 +6,7 @@
   position: relative;
   justify-content: space-between;
   align-items: center;
-  color: var(--color-text-secondary);
+  background-color: #F0E9E0;
   padding: 20px 30px;
 
   @include respond(tablet) {
@@ -21,16 +21,22 @@
 
   &__info {
     display: flex;
+    font-size: 12px;
+
+    @include respond(mobile) {
+      margin-bottom: 10px;
+    }
   }
 
   &__social {
     display: flex;
-    gap: 10px;
+    gap: 15px;
   }
 
   &__links {
     display: flex;
-    gap: 10px;
+    gap: 20px;
+    font-size: 12px;
   }
 
   &__break {
@@ -42,7 +48,7 @@
   }
 
   @media (max-width: 570px) and (min-width: 480px) {
-    font-size: 12px;
+    font-size: 14px;
     padding: 16px 20px;
     gap: 8px;
   }
