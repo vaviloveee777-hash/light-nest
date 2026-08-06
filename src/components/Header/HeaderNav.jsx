@@ -22,7 +22,9 @@ const HeaderNav = (props) => {
           <NavLink
             key={item.id}
             to={item.id === 'home' ? '/' : `/${item.id}`}
-            className={({ isActive }) => `header__nav-button ${isActive ? 'header__nav-button--active' : ''}`}
+            className={({ isActive }) =>
+              `header__nav-button ${isActive 
+              ? 'header__nav-button--active' : ''}`}
           >
             {item.label}
           </NavLink>
