@@ -1,7 +1,12 @@
 import useLocalStorage from "@/hooks/useLocalStorage.js";
+import TodoHero from './components/TodoHero.jsx'
+import TodoForm from './components/TodoForm.jsx'
+import TodoToolbar from './components/TodoToolbar.jsx'
+import TodoList from './components/TodoList.jsx'
+import TodoFooterRow from './components/TodoFooterRow.jsx'
 import './TodoPage.scss'
 import { useState, useRef, useEffect } from "react";
-import { X, Search, Trash2 } from 'lucide-react'
+
 
 const TodoPage = () => {
 
@@ -70,123 +75,37 @@ const TodoPage = () => {
 
   return (
     <div className="todo-page">
-      <div className="todo-page__hero">
-        <h1 className="todo-page__title">My ToDo list</h1>
-        <p className="todo-page__subtitle">
-          Order in affairs is the result in life
-        </p>
-      </div>
+      <TodoHero />
 
       <div className="todo-page__main">
-        <div className="todo-page__form">
-          <input
-            type="text"
-            className={`todo-page__input ${titleError
-              ? 'todo-page__input--error' : ''}`}
-            placeholder="Add a new task..."
-            value={newTodoTitle}
-            onChange={(event) => setTodoTitle(event.target.value)}
-            onKeyDown={(event) => {
-              if (event.key === 'Enter') {
-                addTodo()
-              }
-            }}
+        <TodoForm
+          newTitle={newTodoTitle}
+          setTitle={setTodoTitle}
+          addTask={addTodo}
+          error={titleError}
+        />
+
+          <TodoToolbar
+            searchQuery={searchQuery}
+            setSearchQuery={setSearchQuery}
+            statusFilter={statusFilter}
+            setStatusFilter={setStatusFilter}
           />
-          <button
-            className="todo-page__add-button"
-            onClick={addTodo}>
-            Add Task
-          </button>
-        </div>
-        {titleError && <p className="todo-page__error">{titleError}</p>}
 
-        <div className="todo-page__toolbar">
-          <div className="todo-page__search">
-            <Search size={16} className="todo-page__search-icon" />
-            <input
-              type="text"
-              className="todo-page__input todo-page__input--search"
-              placeholder="Search task..."
-              value={searchQuery}
-              onChange={(event) => setSearchQuery(event.target.value)}
-            />
-          </div>
+        <TodoFooterRow
+          doneCount={doneCount}
+          todos={todos}
+          onClearAll={clearAllTodos}
+          onShowIncomplete={scrollToIncompleteTask}
+        />
 
-          <div className="todo-page__tabs">
-            <button
-              className={`todo-page__tab ${statusFilter === 'all'
-                ? 'todo-page__tab--active' : ''}`}
-              onClick={() => setStatusFilter('all')}
-            >
-              All
-            </button>
-            <button
-              className={`todo-page__tab ${statusFilter === 'active'
-                ? 'todo-page__tab--active' : ''}`}
-              onClick={() => setStatusFilter('active')}
-            >
-              Active
-            </button>
-            <button
-              className={`todo-page__tab ${statusFilter === 'completed'
-                ? 'todo-page__tab--active' : ''}`}
-              onClick={() => setStatusFilter('completed')}
-            >
-              Completed
-            </button>
-          </div>
-        </div>
-        <div className="todo-page__footer-row">
-          <p className="todo-page__counter">
-            Done {doneCount} from {todos.length}
-          </p>
-          <div className="todo-page__footer-buttons">
-            <button
-              className="todo-page__small-button"
-              onClick={scrollToIncompleteTask}>
-              Show first incomplete task
-            </button>
-            {todos.length > 0 && (
-              <button
-                className="todo-page__small-button
-                 todo-page__small-button--danger"
-                onClick={clearAllTodos}>
-                <Trash2 size={13} />
-                Delete all
-              </button>
-            )}
-          </div>
-        </div>
-
-        <div className="todo-page__list">
-          {filteredTodos.length === 0 && (
-            <p
-              className="todo-page__empty">
-              Not a single task...
-            </p>
-          )}
-          {filteredTodos.map((todo) => (
-            <div
-              key={todo.id}
-              className="todo-page__item"
-              ref={todo.id === firstIncompleteTask?.id ? incompleteTaskRef : null}
-            >
-              <input
-                type="checkbox"
-                className="todo-page__checkbox"
-                checked={todo.isDone}
-                onChange={() => toggleTodo(todo.id)}
-              />
-              <span
-                className="todo-page__item-title">
-                {todo.title}
-              </span>
-              <button className="todo-page__delete" onClick={() => deleteTodo(todo.id)}>
-                <X size={16} />
-              </button>
-            </div>
-          ))}
-        </div>
+          <TodoList
+            filteredTodos={filteredTodos}
+            onToggle={toggleTodo}
+            onDelete={deleteTodo}
+            firstIncompleteTask={firstIncompleteTask}
+            incompleteTaskRef={incompleteTaskRef}
+          />
       </div>
     </div>
   )
