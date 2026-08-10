@@ -1,7 +1,7 @@
-import Hero from '@/components/Hero/Hero.jsx'
-import './HomePage.scss'
-import SummaryCard from '@/components/shared/SummaryCard/index.js'
 import {ListChecks, NotebookText, CloudSun, MapPin} from 'lucide-react'
+import Hero from '@/components/Hero/Hero.jsx'
+import SummaryCard from '@/components/shared/SummaryCard/index.js'
+import './HomePage.scss'
 
 const HomePage = () => {
   return (

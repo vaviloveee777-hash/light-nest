@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import './Header.scss'
 import HeaderBrand from "@/components/Header/components/HeaderBrand.jsx";
 import HeaderActions from "@/components/Header/components/HeaderActions.jsx";
+import './Header.scss'
 
 
 const Header = (props) => {
