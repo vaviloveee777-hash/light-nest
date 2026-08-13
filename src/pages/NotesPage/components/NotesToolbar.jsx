@@ -1,7 +1,10 @@
+import { Trash } from "lucide-react";
+
 const NotesToolbar = (props) => {
   const {
     activeFilter,
     setActiveFilter,
+    onClearAll,
   } = props
 
   return (
@@ -23,7 +26,8 @@ const NotesToolbar = (props) => {
       </button>
 
       <button
-        className={`notes-page__tab ${activeFilter === 'recent' ? 'notes-page__tab--active' : ''}`}
+        className={`notes-page__tab ${activeFilter === 'recent' 
+          ? 'notes-page__tab--active' : ''}`}
         onClick={() => setActiveFilter('recent')}
       >
         Recent
@@ -36,8 +40,15 @@ const NotesToolbar = (props) => {
       >
         Archived
       </button>
-    </div>
 
+      <button
+        className="notes-page__delete-all"
+        onClick={onClearAll}
+      >
+        <Trash size={14} />
+        Delete All
+      </button>
+    </div>
   )
 }
 

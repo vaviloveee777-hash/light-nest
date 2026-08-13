@@ -35,6 +35,15 @@ const NoteFormModal = (props) => {
             placeholder="Write a title..."
             value={newTitle}
             onChange={(event) => setNewTitle(event.target.value)}
+            onKeyDown={(event) => {
+              if (event.key === 'Enter') {
+                onSave({
+                  title: newTitle,
+                  content: newContent,
+                  isFavorite: newIsFavorite
+                })
+              }
+            }}
           />
           {titleError && <p className="note-form__error">{titleError}</p>}
         </div>

@@ -66,6 +66,10 @@ const NotesPage = () => {
       return true
     })
 
+  const clearAllNotes = () => {
+    setNotes([])
+  }
+
     return (
       <div className="notes-page">
 
@@ -79,6 +83,7 @@ const NotesPage = () => {
         <NotesToolbar
           activeFilter={activeFilter}
           setActiveFilter={setActiveFilter}
+          onClearAll={clearAllNotes}
         />
 
         <NotesList
