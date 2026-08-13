@@ -37,6 +37,10 @@ const NotesPage = () => {
       ? { ...note, isFavorite: !note.isFavorite } : note))
   }
 
+  const deleteNote = (id) => {
+    setNotes(notes.filter(note => note.id !== id))
+  }
+
     return (
       <div className="notes-page">
 
@@ -48,6 +52,7 @@ const NotesPage = () => {
         )}
         <NotesList
           notes={notes}
+          onDelete={deleteNote}
           onToggleFavorite={toggleFavorite}
         />
       </div>

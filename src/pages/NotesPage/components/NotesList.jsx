@@ -3,7 +3,8 @@ import NoteCard from "@/pages/NotesPage/components/NoteCard.jsx";
 const NotesList = (props) => {
   const {
     notes = [],
-    onToggleFavorite
+    onToggleFavorite,
+    onDelete,
   } = props
 
   return (
@@ -18,6 +19,7 @@ const NotesList = (props) => {
           key={note.id}
           note={note}
           onToggleFavorite={onToggleFavorite}
+          onDelete={onDelete}
         />
         ))}
     </div>

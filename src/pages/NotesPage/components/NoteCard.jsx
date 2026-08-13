@@ -1,9 +1,10 @@
-import {Star} from "lucide-react";
+import { Star, X } from "lucide-react";
 
 const NoteCard = (props) => {
   const {
     note,
     onToggleFavorite,
+    onDelete,
   } = props
 
 
@@ -19,12 +20,18 @@ const NoteCard = (props) => {
         {note.date}
       </span>
       <div className="note-card__button-star">
+
         <button
           className={`note-card__button-star ${note.isFavorite
             ? 'note-card__button-star--active' : ''}`}
           onClick={() => onToggleFavorite(note.id)}
         >
           <Star size={20} />
+        </button>
+
+        <button className="note-card__delete"
+          onClick={() => onDelete(note.id)}>
+          <X size={16} />
         </button>
     </div>
     </div>
