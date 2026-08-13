@@ -4,6 +4,7 @@ import NotesHero from "@/pages/NotesPage/components/NotesHero.jsx"
 import NoteFormModal from "@/pages/NotesPage/components/NoteFormModal.jsx"
 import NotesList from "@/pages/NotesPage/components/NotesList.jsx"
 import NotesToolbar from "@/pages/NotesPage/components/NotesToolbar.jsx"
+import './NotesPage.scss'
 
 
 const NotesPage = () => {
@@ -74,7 +75,7 @@ const NotesPage = () => {
         {isModalOpen && (
           <NoteFormModal onSave={addNote} onClose={() => setModalOpen(false)} />
         )}
-
+        <div className="notes-page__main">
         <NotesToolbar
           activeFilter={activeFilter}
           setActiveFilter={setActiveFilter}
@@ -87,6 +88,7 @@ const NotesPage = () => {
           onTogglePinned={togglePinned}
           onToggleArchived={toggleArchived}
         />
+      </div>
       </div>
     )
 }
