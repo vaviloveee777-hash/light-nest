@@ -1,10 +1,12 @@
-import { Star, X } from "lucide-react";
+import { Star, X, Pin, Archive } from "lucide-react";
 
 const NoteCard = (props) => {
   const {
     note,
     onToggleFavorite,
     onDelete,
+    onTogglePinned,
+    onToggleArchived,
   } = props
 
 
@@ -32,6 +34,22 @@ const NoteCard = (props) => {
         <button className="note-card__delete"
           onClick={() => onDelete(note.id)}>
           <X size={16} />
+        </button>
+
+        <button
+          className={`note-card__button-pin ${note.isPinned
+            ? 'note-card__button-pin--active' : ''}`}
+          onClick={() => onTogglePinned(note.id)}
+          >
+          <Pin size={16} />
+        </button>
+
+        <button
+          className={`note-card__button-archived ${note.isArchived
+            ? 'note-card__button-archived--active' : ''}`}
+          onClick={() => onToggleArchived(note.id)}
+        >
+          <Archive size={16} />
         </button>
     </div>
     </div>

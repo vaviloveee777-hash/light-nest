@@ -5,6 +5,8 @@ const NotesList = (props) => {
     notes = [],
     onToggleFavorite,
     onDelete,
+    onTogglePinned,
+    onToggleArchived,
   } = props
 
   return (
@@ -20,6 +22,8 @@ const NotesList = (props) => {
           note={note}
           onToggleFavorite={onToggleFavorite}
           onDelete={onDelete}
+          onTogglePinned={onTogglePinned}
+          onToggleArchived={onToggleArchived}
         />
         ))}
     </div>
