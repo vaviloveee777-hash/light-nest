@@ -23,7 +23,8 @@ const TodoFooterRow = (props) => {
         {todos.length > 0 && (
           <button
             className="todo-page__small-button todo-page__small-button--danger"
-            onClick={onClearAll }>
+            onClick={onClearAll}
+          >
             <Trash2 size={13} />
             Delete all
           </button>

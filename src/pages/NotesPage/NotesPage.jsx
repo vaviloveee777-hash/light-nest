@@ -4,6 +4,7 @@ import NotesHero from "@/pages/NotesPage/components/NotesHero.jsx"
 import NoteFormModal from "@/pages/NotesPage/components/NoteFormModal.jsx"
 import NotesList from "@/pages/NotesPage/components/NotesList.jsx"
 import NotesToolbar from "@/pages/NotesPage/components/NotesToolbar.jsx"
+import ConfirmModal from "@/components/shared/ConfirmModal/ConfirmModal.jsx"
 import './NotesPage.scss'
 
 
@@ -16,6 +17,8 @@ const NotesPage = () => {
   const [isModalOpen, setModalOpen] = useState(false)
 
   const [activeFilter, setActiveFilter] = useState('all')
+
+  const [isConfirmOpen, setConfirmOpen] = useState(false)
 
   useEffect(() => {
     save(notes)
@@ -57,9 +60,10 @@ const NotesPage = () => {
     setNotes(notes.filter(note => note.id !== id))
   }
 
+
   const filteredNotes = notes
     .filter(note => {
-      if (activeFilter === 'all') return true
+      if (activeFilter === 'all') return note.isArchived === false
       if (activeFilter  === 'pinned') return note.isPinned === true
       if (activeFilter  === 'archived') return note.isArchived === true
       if (activeFilter === 'recent') return (Date.now() - note.id) < (3 * 24 * 60 * 60 * 1000)
@@ -80,11 +84,11 @@ const NotesPage = () => {
           <NoteFormModal onSave={addNote} onClose={() => setModalOpen(false)} />
         )}
         <div className="notes-page__main">
-        <NotesToolbar
-          activeFilter={activeFilter}
-          setActiveFilter={setActiveFilter}
-          onClearAll={clearAllNotes}
-        />
+          <NotesToolbar
+            activeFilter={activeFilter}
+            setActiveFilter={setActiveFilter}
+            onClearAll={() => setConfirmOpen(true)}
+          />
 
         <NotesList
           notes={filteredNotes}
@@ -93,6 +97,17 @@ const NotesPage = () => {
           onTogglePinned={togglePinned}
           onToggleArchived={toggleArchived}
         />
+
+          {isConfirmOpen && (
+            <ConfirmModal
+              message="Are you sure you want to delete all notes?"
+              onConfirm={() => {
+                clearAllNotes()
+                setConfirmOpen(false)
+              }}
+              onCancel={() => setConfirmOpen(false)}
+            />
+          )}
       </div>
       </div>
     )

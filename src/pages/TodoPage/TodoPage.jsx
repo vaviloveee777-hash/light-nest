@@ -5,6 +5,7 @@ import TodoForm from './components/TodoForm.jsx'
 import TodoToolbar from './components/TodoToolbar.jsx'
 import TodoList from './components/TodoList.jsx'
 import TodoFooterRow from './components/TodoFooterRow.jsx'
+import ConfirmModal from '@/components/shared/ConfirmModal/ConfirmModal.jsx'
 import './TodoPage.scss'
 
 
@@ -16,6 +17,8 @@ const TodoPage = () => {
   const [todos, setTodos] = useState(() => load() || [])
 
   const [newTodoTitle, setTodoTitle] = useState('')
+
+  const [isConfirmOpen, setConfirmOpen] = useState(false)
 
   const addTodo = () => {
     if (!newTodoTitle.trim()) {
@@ -96,7 +99,7 @@ const TodoPage = () => {
         <TodoFooterRow
           doneCount={doneCount}
           todos={todos}
-          onClearAll={clearAllTodos}
+          onClearAll={() => setConfirmOpen(true)}
           onShowIncomplete={scrollToIncompleteTask}
         />
 
@@ -107,6 +110,17 @@ const TodoPage = () => {
             firstIncompleteTask={firstIncompleteTask}
             incompleteTaskRef={incompleteTaskRef}
           />
+
+        {isConfirmOpen && (
+          <ConfirmModal
+            message="Are you sure you want to delete all tasks?"
+            onConfirm={() => {
+              clearAllTodos()
+              setConfirmOpen(false)
+            }}
+            onCancel={() => setConfirmOpen(false)}
+          />
+        )}
       </div>
     </div>
   )
