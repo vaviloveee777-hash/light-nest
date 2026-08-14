@@ -60,15 +60,15 @@ const NotesPage = () => {
     setNotes(notes.filter(note => note.id !== id))
   }
 
-
   const filteredNotes = notes
     .filter(note => {
-      if (activeFilter === 'all') return note.isArchived === false
-      if (activeFilter  === 'pinned') return note.isPinned === true
+      if (activeFilter === 'all') return note.isArchived === false && note.isFavorite === false
+      if (activeFilter  === 'favorite') return note.isFavorite === true
       if (activeFilter  === 'archived') return note.isArchived === true
       if (activeFilter === 'recent') return (Date.now() - note.id) < (3 * 24 * 60 * 60 * 1000)
       return true
     })
+    .sort((a, b) => Number(b.isPinned) - Number(a.isPinned))
 
   const clearAllNotes = () => {
     setNotes([])

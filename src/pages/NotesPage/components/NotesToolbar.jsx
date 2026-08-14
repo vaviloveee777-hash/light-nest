@@ -18,11 +18,11 @@ const NotesToolbar = (props) => {
       </button>
 
       <button
-        className={`notes-page__tab ${activeFilter === 'pinned'
+        className={`notes-page__tab ${activeFilter === 'favorite'
           ? 'notes-page__tab--active' : ''}`}
-        onClick={() => setActiveFilter('pinned')}
+        onClick={() => setActiveFilter('favorite')}
       >
-        Pinned
+        Favorite
       </button>
 
       <button

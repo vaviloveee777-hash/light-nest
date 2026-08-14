@@ -74,7 +74,7 @@ const NoteFormModal = (props) => {
               isFavorite: newIsFavorite
             })}
           >
-            Сохранить
+            Save
           </button>
         </div>
       </div>
