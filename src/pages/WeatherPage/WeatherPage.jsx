@@ -1,5 +1,6 @@
 import {useEffect, useState} from "react";
 import weatherCodes from "@/utils/weatherCodes"
+import cities from "@/utils/cities"
 
 
 const WeatherPage = () => {
@@ -15,6 +16,8 @@ const WeatherPage = () => {
   const [todayDetails, setTodayDetails] = useState(null)
 
   const [airQuality, setAirQuality] = useState(null)
+
+  const [selectedCity, setSelectedCity] = useState("")
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((position) => {
@@ -102,6 +105,22 @@ const WeatherPage = () => {
 
   return (
     <div>
+      <select
+        value={selectedCity}
+        onChange={(event) => {
+          const cityName = event.target.value
+          setSelectedCity(cityName)
+
+          const city = cities.find((city) => city.name === cityName)
+          setCoords({ lat: city.lat, lon: city.lon })
+        }}
+      >
+        {cities.map((city) => (
+          <option key={city.name} value={city.name}>
+            {city.name}
+          </option>
+        ))}
+      </select>
       {weather ? `${weather.temperature_2m}, ${weather.apparent_temperature}, ${weather.relative_humidity_2m}, ${weather.wind_speed_10m}, ${weatherCodes[weather.weather_code]}, ${weather.visibility}` : "Loading..."}
       <div>
         {dailyForecast && dailyForecast.map((day) => (
