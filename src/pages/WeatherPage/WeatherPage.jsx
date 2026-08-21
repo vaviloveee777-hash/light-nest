@@ -1,6 +1,11 @@
 import {useEffect, useState} from "react";
-import weatherCodes from "@/utils/weatherCodes"
 import cities from "@/utils/cities"
+import CurrentWeather from "@/pages/WeatherPage/components/CurrentWeather.jsx";
+import CitySelect from "@/pages/WeatherPage/components/CitySelect.jsx"
+import DailyForecast from "@/pages/WeatherPage/components/DailyForecast.jsx";
+import HourlyForecast from "@/pages/WeatherPage/components/HourlyForecast.jsx";
+import TodayDetails from "@/pages/WeatherPage/components/TodayDetails.jsx";
+import AirQuality from "@/pages/WeatherPage/components/AirQuality.jsx";
 
 
 const WeatherPage = () => {
@@ -105,50 +110,35 @@ const WeatherPage = () => {
 
   return (
     <div>
-      <select
-        value={selectedCity}
-        onChange={(event) => {
-          const cityName = event.target.value
-          setSelectedCity(cityName)
+      <CitySelect
+        selectedCity={selectedCity}
+        onCityChange={(cityName) => {
+        setSelectedCity(cityName)
 
           const city = cities.find((city) => city.name === cityName)
-          setCoords({ lat: city.lat, lon: city.lon })
+          setCoords({lat: city.lat, lon: city.lon})
         }}
-      >
-        {cities.map((city) => (
-          <option key={city.name} value={city.name}>
-            {city.name}
-          </option>
-        ))}
-      </select>
-      {weather ? `${weather.temperature_2m}, ${weather.apparent_temperature}, ${weather.relative_humidity_2m}, ${weather.wind_speed_10m}, ${weatherCodes[weather.weather_code]}, ${weather.visibility}` : "Loading..."}
-      <div>
-        {dailyForecast && dailyForecast.map((day) => (
-          <div
-            key={day.date}
-          >
-            {day.date} — {day.min}° / {day.max}° — {weatherCodes[day.code]}
-          </div>
-        ))}
-      </div>
+      />
 
-      <div>
-        {hourlyForecast && hourlyForecast.map((day) => (
-          <div
-            key={day.time}
-          >
-            {day.time} — {day.temp}° — {weatherCodes[day.code]}
-          </div>
-        ))}
-      </div>
+      <CurrentWeather
+        weather={weather}
+      />
 
-      <div>
-        {todayDetails ? `${todayDetails.pressure}, ${todayDetails.uvIndex}, ${todayDetails.sunrise}, ${todayDetails.sunset}` : "Loading..."}
-      </div>
+        <DailyForecast
+          dailyForecast={dailyForecast}
+        />
 
-      <div>
-        {airQuality ? `${airQuality.us_aqi}, ${airQuality.pm2_5}` : "Loading..."}
-      </div>
+      <HourlyForecast
+        hourlyForecast={hourlyForecast}
+      />
+
+      <TodayDetails
+      todayDetails={todayDetails}
+      />
+
+      <AirQuality
+        airQuality={airQuality}
+      />
 
     </div>
   )
