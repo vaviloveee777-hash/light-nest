@@ -1,11 +1,15 @@
-import {useEffect, useState} from "react";
+import {useEffect, useState} from "react"
 import cities from "@/utils/cities"
-import CurrentWeather from "@/pages/WeatherPage/components/CurrentWeather.jsx";
 import CitySelect from "@/pages/WeatherPage/components/CitySelect.jsx"
-import DailyForecast from "@/pages/WeatherPage/components/DailyForecast.jsx";
-import HourlyForecast from "@/pages/WeatherPage/components/HourlyForecast.jsx";
-import TodayDetails from "@/pages/WeatherPage/components/TodayDetails.jsx";
-import AirQuality from "@/pages/WeatherPage/components/AirQuality.jsx";
+import DailyForecast from "@/pages/WeatherPage/components/DailyForecast.jsx"
+import HourlyForecast from "@/pages/WeatherPage/components/HourlyForecast.jsx"
+import TodayDetails from "@/pages/WeatherPage/components/TodayDetails.jsx"
+import AirQuality from "@/pages/WeatherPage/components/AirQuality.jsx"
+import WeatherHero from "@/pages/WeatherPage/components/WeatherHero.jsx"
+import getWeatherIcon from "@/utils/weatherIcons"
+import weatherCodes from "@/utils/weatherCodes"
+
+import "./WeatherPage.scss"
 
 
 const WeatherPage = () => {
@@ -39,8 +43,7 @@ const WeatherPage = () => {
     const params = new URLSearchParams({
       latitude: coords.lat,
       longitude: coords.lon,
-      current: "temperature_2m,apparent_temperature,relative_humidity_2m,wind_speed_10m,surface_pressure,visibility",
-      daily: "temperature_2m_max,temperature_2m_min,uv_index_max,sunrise,sunset,weather_code",
+      current: "temperature_2m,apparent_temperature,relative_humidity_2m,wind_speed_10m,surface_pressure,visibility,weather_code",      daily: "temperature_2m_max,temperature_2m_min,uv_index_max,sunrise,sunset,weather_code",
       hourly: "temperature_2m,weather_code",
       timezone: "auto"
     })
@@ -108,38 +111,54 @@ const WeatherPage = () => {
     fetchAirQuality()
   }, [coords])
 
+  const conditionText = weatherCodes[weather?.weather_code]
+  const ConditionIcon = weather && getWeatherIcon(weather.weather_code)
+
   return (
-    <div>
-      <CitySelect
+    <div className="weather-page">
+
+      <WeatherHero
         selectedCity={selectedCity}
         onCityChange={(cityName) => {
-        setSelectedCity(cityName)
-
+          setSelectedCity(cityName)
           const city = cities.find((city) => city.name === cityName)
           setCoords({lat: city.lat, lon: city.lon})
         }}
+        updatedAt="just now"
+        temp={weather && Math.round(weather.temperature_2m)}
+        feelsLike={weather && Math.round(weather.apparent_temperature)}
+        condition={conditionText}
+        conditionIcon={ConditionIcon}
+        humidity={weather?.relative_humidity_2m}
+        wind={weather?.wind_speed_10m}
+        visibility={weather?.visibility}
       />
 
-      <CurrentWeather
-        weather={weather}
-      />
+      <div
+        className="weather-page__grid"
+      >
+        <div
+          className="weather-page__main"
+        >
+          <HourlyForecast
+            hourlyForecast={hourlyForecast}
+          />
+          <DailyForecast
+            dailyForecast={dailyForecast}
+          />
+        </div>
 
-        <DailyForecast
-          dailyForecast={dailyForecast}
-        />
-
-      <HourlyForecast
-        hourlyForecast={hourlyForecast}
-      />
-
-      <TodayDetails
-      todayDetails={todayDetails}
-      />
-
-      <AirQuality
-        airQuality={airQuality}
-      />
-
+        <div
+          className="weather-page__side"
+        >
+          <TodayDetails
+            todayDetails={todayDetails}
+          />
+          <AirQuality
+            airQuality={airQuality}
+          />
+        </div>
+      </div>
     </div>
   )
 }
