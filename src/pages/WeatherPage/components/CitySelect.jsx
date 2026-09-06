@@ -1,4 +1,4 @@
-import cities from '@/utils/cities'
+import cities from "@/utils/cities"
 
 const CitySelect = (props) => {
   const {
@@ -6,23 +6,26 @@ const CitySelect = (props) => {
     onCityChange,
   } = props
 
-
   return (
-    <div>
-      <select
-        value={selectedCity}
-        onChange={(event) => onCityChange(event.target.value)}
+    <select
+      className="city-select"
+      value={selectedCity}
+      onChange={(event) => onCityChange(event.target.value)}
+    >
+      <option
+        value=""
       >
-        {cities.map((city) => (
-          <option
-            key={city.name}
-            value={city.name}
-          >
-            {city.name}
-          </option>
-        ))}
-      </select>
-    </div>
+        My location
+      </option>
+      {cities.map((city) => (
+        <option
+          key={city.name}
+          value={city.name}
+        >
+          {city.name}
+        </option>
+      ))}
+    </select>
   )
 }
 

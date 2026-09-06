@@ -1,5 +1,10 @@
-import weatherCodes from "@/utils/weatherCodes.js";
+import weatherCodes from "@/utils/weatherCodes.js"
 
+const formatHour = (isoString, index) => {
+  if (index === 0) return "Now"
+  const date = new Date(isoString)
+  return `${date.getHours().toString().padStart(2, "0")}:00`
+}
 
 const HourlyForecast = (props) => {
   const {
@@ -7,14 +12,31 @@ const HourlyForecast = (props) => {
   } = props
 
   return (
-    <div>
-      {hourlyForecast && hourlyForecast.map((day) => (
-        <div
-          key={day.time}
-        >
-          {day.time} — {day.temp}° — {weatherCodes[day.code]}
-        </div>
-      ))}
+    <div className="hourly-forecast">
+      <h3
+        className="hourly-forecast__title"
+      >
+        Hourly Forecast
+      </h3>
+      <div
+        className="hourly-forecast__list"
+      >
+        {hourlyForecast && hourlyForecast.map((hour, index) => (
+          <div
+            className={`hourly-forecast__item ${index === 0 ? "hourly-forecast__item--now" : ""}`}
+            key={hour.time}
+          >
+            <span
+              className="hourly-forecast__time"
+            >{formatHour(hour.time, index)}
+            </span>
+            <span
+              className="hourly-forecast__temp"
+            >{Math.round(hour.temp)}°
+            </span>
+          </div>
+        ))}
+      </div>
     </div>
   )
 }
