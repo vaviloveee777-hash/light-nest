@@ -1,4 +1,5 @@
 import weatherCodes from "@/utils/weatherCodes.js"
+import getWeatherIcon from "@/utils/weatherIcons"
 
 const formatHour = (isoString, index) => {
   if (index === 0) return "Now"
@@ -21,21 +22,28 @@ const HourlyForecast = (props) => {
       <div
         className="hourly-forecast__list"
       >
-        {hourlyForecast && hourlyForecast.map((hour, index) => (
-          <div
-            className={`hourly-forecast__item ${index === 0 ? "hourly-forecast__item--now" : ""}`}
-            key={hour.time}
-          >
-            <span
-              className="hourly-forecast__time"
-            >{formatHour(hour.time, index)}
-            </span>
-            <span
-              className="hourly-forecast__temp"
-            >{Math.round(hour.temp)}°
-            </span>
-          </div>
-        ))}
+        {hourlyForecast && hourlyForecast.map((hour, index) => {
+          const Icon = getWeatherIcon(hour.code)
+          return (
+            <div
+              className={`hourly-forecast__item ${index === 0 ? "hourly-forecast__item--now" : ""}`}
+              key={hour.time}
+            >
+              <span
+                className="hourly-forecast__time"
+              >{formatHour(hour.time, index)}
+              </span>
+              <Icon
+                size={20}
+                className="hourly-forecast__icon"
+              />
+              <span
+                className="hourly-forecast__temp"
+              >{Math.round(hour.temp)}°
+              </span>
+            </div>
+          )
+        })}
       </div>
     </div>
   )
