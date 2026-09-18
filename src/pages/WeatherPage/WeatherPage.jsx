@@ -8,8 +8,8 @@ import AirQuality from "@/pages/WeatherPage/components/AirQuality.jsx"
 import WeatherHero from "@/pages/WeatherPage/components/WeatherHero.jsx"
 import getWeatherIcon from "@/utils/weatherIcons"
 import weatherCodes from "@/utils/weatherCodes"
-
 import "./WeatherPage.scss"
+import Precipitation from "@/pages/WeatherPage/components/Precipitation.jsx";
 
 
 const WeatherPage = () => {
@@ -44,7 +44,7 @@ const WeatherPage = () => {
       latitude: coords.lat,
       longitude: coords.lon,
       current: "temperature_2m,apparent_temperature,relative_humidity_2m,wind_speed_10m,surface_pressure,visibility,weather_code",      daily: "temperature_2m_max,temperature_2m_min,uv_index_max,sunrise,sunset,weather_code",
-      hourly: "temperature_2m,weather_code",
+      hourly: "temperature_2m,weather_code,precipitation_probability",
       timezone: "auto"
     })
     const url = `https://api.open-meteo.com/v1/forecast?${params}`
@@ -69,6 +69,7 @@ const WeatherPage = () => {
           time: time,
           temp: data.hourly.temperature_2m[index],
           code: data.hourly.weather_code[index],
+          precipitation: data.hourly.precipitation_probability[index],
         }
       })
 
@@ -156,6 +157,9 @@ const WeatherPage = () => {
           />
           <AirQuality
             airQuality={airQuality}
+          />
+          <Precipitation
+            hourlyForecast={hourlyForecast}
           />
         </div>
       </div>
