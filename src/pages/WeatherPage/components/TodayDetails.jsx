@@ -1,3 +1,5 @@
+import { Gauge, Sun, Sunrise, Sunset } from "lucide-react"
+
 const formatTime = (isoString) => {
   const date = new Date(isoString)
   return `${date.getHours().toString().padStart(2, "0")}:${date.getMinutes().toString().padStart(2, "0")}`
@@ -11,10 +13,10 @@ const TodayDetails = (props) => {
   if (!todayDetails) return <div className="weather-loading">Loading...</div>
 
   const rows = [
-    {label: "Pressure", value: `${Math.round(todayDetails.pressure)} hPa`},
-    {label: "UV Index", value: todayDetails.uvIndex},
-    {label: "Sunrise", value: formatTime(todayDetails.sunrise)},
-    {label: "Sunset", value: formatTime(todayDetails.sunset)},
+    {icon: Gauge, label: "Pressure", value: `${Math.round(todayDetails.pressure)} hPa`},
+    {icon: Sun, label: "UV Index", value: todayDetails.uvIndex},
+    {icon: Sunrise, label: "Sunrise", value: formatTime(todayDetails.sunrise)},
+    {icon: Sunset, label: "Sunset", value: formatTime(todayDetails.sunset)},
   ]
 
   return (
@@ -24,21 +26,25 @@ const TodayDetails = (props) => {
       >
         Today's Details
       </h3>
-      {rows.map((row) => (
-        <div
-          className="today-details__row"
-          key={row.label}
-        >
-          <span>
-            {row.label}
-          </span>
-          <span
-            className="today-details__value"
+      {rows.map((row) => {
+        const Icon = row.icon
+        return (
+          <div
+            className="today-details__row"
+            key={row.label}
           >
-            {row.value}
-          </span>
-        </div>
-      ))}
+            <span className="today-details__label">
+              <Icon size={16} />
+              {row.label}
+            </span>
+            <span
+              className="today-details__value"
+            >
+              {row.value}
+            </span>
+          </div>
+        )
+      })}
     </div>
   )
 }
