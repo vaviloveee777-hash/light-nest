@@ -5,6 +5,11 @@
   background: #F0E9E0;
   min-height: 100vh;
   padding: 32px 24px 60px;
+  overflow-x: hidden;
+
+  @media (max-width: 540px) {
+    padding: 20px 12px 40px;
+  }
 
   &__top {
     display: flex;
@@ -19,7 +24,7 @@
     max-width: 1100px;
     margin: 0 auto;
 
-    @media (max-width: 768px) {
+    @media (max-width: 810px) {
       grid-template-columns: 1fr;
     }
   }
@@ -157,6 +162,11 @@
   border-radius: 16px;
   padding: 24px;
 
+  @media (max-width: 540px) {
+    padding: 16px;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
   &__title {
     font-size: 15px;
     font-weight: 600;
@@ -169,6 +179,10 @@
     gap: 12px;
     overflow-x: auto;
     padding-bottom: 4px;
+
+    @media (max-width: 540px) {
+      gap: 8px;
+    }
   }
 
   &__item {
@@ -179,6 +193,11 @@
     min-width: 64px;
     padding: 12px 8px;
     border-radius: 12px;
+
+    @media (max-width: 540px) {
+      min-width: 48px;
+      padding: 8px 6px;
+    }
 
     &--now {
       background: #F0E9E0;
@@ -206,6 +225,12 @@
   border-radius: 16px;
   padding: 24px;
 
+  @media (max-width: 540px) {
+    padding: 10px;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
   &__title {
     font-size: 15px;
     font-weight: 600;
@@ -223,6 +248,10 @@
 
     &:last-child {
       border-bottom: none;
+    }
+
+    &__track {
+      min-width: 0;
     }
   }
 
@@ -261,15 +290,33 @@
     text-align: right;
   }
 
-  @media (max-width: 480px) {
+  @media (max-width: 540px) {
+    padding: 20px 16px;
+
     &__row {
-      grid-template-columns: 70px 1fr;
+      grid-template-columns: 52px minmax(0, 1fr);
       row-gap: 4px;
+      gap: 8px;
+    }
+
+    &__day {
+      font-size: 13px;
+    }
+
+    &__bar {
+      min-width: 0;
+      gap: 6px;
+    }
+
+    &__min,
+    &__max {
+      font-size: 12px;
     }
 
     &__label {
       grid-column: 1 / -1;
       text-align: left;
+      font-size: 12px;
     }
   }
 }
@@ -278,6 +325,10 @@
   background: #fff;
   border-radius: 16px;
   padding: 24px;
+
+  @media (max-width: 540px) {
+    padding: 20px 16px;
+  }
 
   &__title {
     font-size: 15px;
@@ -293,6 +344,14 @@
     padding: 10px 0;
     font-size: 14px;
     color: #4a453e;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  &__label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
   }
 
   &__value {
@@ -305,6 +364,7 @@
   background: #fff;
   border-radius: 16px;
   padding: 24px;
+
 
   &__title {
     font-size: 15px;
@@ -373,6 +433,8 @@
     font-size: 13px;
     color: #8a8175;
     line-height: 1.5;
+    flex: 1;
+    min-width: 0;
   }
 
   &__pollutant-row {
@@ -402,8 +464,8 @@
 
 .weather-hero {
   position: relative;
-  width: 100vw;
-  margin-left: calc(-50vw + 50%);
+  width: auto;
+  margin: 0 -24px;
   min-height: 420px;
   padding: 40px 48px;
   overflow: hidden;
