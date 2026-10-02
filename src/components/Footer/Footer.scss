@@ -6,7 +6,7 @@
   position: relative;
   justify-content: space-between;
   align-items: center;
-  background-color: #F0E9E0;
+  background-color: var(--color-header-bg);
   padding: 30px 30px;
 
   @include respond(tablet) {
