@@ -116,7 +116,6 @@
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
     border: 1px solid rgba(255, 255, 255, 0.6);
-
     [data-theme='dark'] &:hover {
       background: var(--color-glass-pill);
       border-color: rgba(255, 255, 255, 0.35);
