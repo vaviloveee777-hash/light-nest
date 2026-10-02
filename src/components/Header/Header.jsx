@@ -9,7 +9,8 @@ const Header = (props) => {
   const {} = props
 
   const { pathname } = useLocation()
-  const isHome = pathname === '/'
+  const glassRoutes = ['/', '/todo']
+  const isGlass = glassRoutes.includes(pathname)
 
   const [isOpen, setOpen] = useState(false)
 
@@ -24,7 +25,7 @@ const Header = (props) => {
 
 
   return (
-    <header className={`header ${isHome ? 'header--glass' : ''}`}>
+    <header className={`header ${isGlass ? 'header--glass' : ''}`}>
       <HeaderBrand isOpen={isOpen} />
       <HeaderActions isOpen={isOpen} setOpen={setOpen} />
     </header>

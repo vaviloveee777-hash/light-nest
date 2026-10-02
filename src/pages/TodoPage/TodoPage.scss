@@ -9,12 +9,14 @@
     flex-direction: column;
     justify-content: center;
     background-image: url(../../assets/background-desktop.png);
+    background-color: var(--color-header-bg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     padding-left: clamp(60px, -312px + 10.2vw, 500px);
     padding-bottom: 200px;
     overflow: hidden;
+    padding-top: 80px;
 
     @include respond(tablet) {
       padding-left: 60px;
@@ -29,6 +31,10 @@
       text-align: center;
       align-items: center;
     }
+    [data-theme='dark'] & {
+      background-color: #5a5550;
+      background-blend-mode: multiply;
+    }
   }
 
   &__title {
@@ -42,6 +48,9 @@
     @include respond(mobile) {
       font-size: 30px;
     }
+    [data-theme='dark'] & {
+      text-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
+    }
   }
 
   &__subtitle {
@@ -51,6 +60,10 @@
     position: relative;
     z-index: 1;
     font-weight: 800;
+
+    [data-theme='dark'] & {
+      color: var(--color-text-secondary);
+    }
   }
 
   &__main {
@@ -60,7 +73,6 @@
     display: flex;
     flex-direction: column;
     gap: 14px;
-    background-color: #F0E9E0;
 
     @include respond(mobile) {
       padding: 40px 16px 40px;
@@ -90,12 +102,16 @@
     &::placeholder {
       color: var(--color-text-muted);
     }
+    &:focus {
+      outline: none;
+      border-color: var(--color-text-secondary);
+    }
 
     &--error {
       border-color: #d64545;
 
       &:focus {
-        outline-color: #d64545;
+        border-color: #d64545;
       }
     }
   }
@@ -109,6 +125,16 @@
     @include respond(mobile) {
       font-size: 12px;
       padding: 5px 10px;
+    }
+    [data-theme='dark'] & {
+      background: var(--color-glass-pill);
+      color: var(--color-text-main);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+    }
+
+    [data-theme='dark'] &:hover {
+      background: rgba(255, 255, 255, 0.2);
+      color: var(--color-text-main);
     }
   }
 
@@ -173,6 +199,7 @@
     cursor: pointer;
     color: var(--color-text-secondary);
     transition: background 0.2s ease, color 0.2s ease;
+    border: 1px solid transparent;
 
     &:hover {
       color: var(--color-text-main);
@@ -182,6 +209,12 @@
       background: var(--color-accent-dark);
       color: var(--color-bg-white);
       font-weight: 500;
+
+      [data-theme='dark'] & {
+        background: var(--color-glass-pill);
+        color: var(--color-text-main);
+        border: 1px solid rgba(255, 255, 255, 0.25);
+      }
     }
   }
 
