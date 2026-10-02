@@ -9,7 +9,7 @@ const Header = (props) => {
   const {} = props
 
   const { pathname } = useLocation()
-  const glassRoutes = ['/', '/todo']
+  const glassRoutes = ['/', '/todo', '/notes']
   const isGlass = glassRoutes.includes(pathname)
 
   const [isOpen, setOpen] = useState(false)
