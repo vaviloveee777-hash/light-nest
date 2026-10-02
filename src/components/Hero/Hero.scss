@@ -13,6 +13,10 @@
   background-position: center;
   background-repeat: no-repeat;
   height: 100vh;
+  [data-theme='dark'] & {
+    background-color: #5a5550;
+    background-blend-mode: multiply;
+  }
 
   @include respond(tablet) {
     padding-left: 60px;
@@ -46,17 +50,34 @@
       pointer-events: none;
     }
   }
+  &__greeting {
+    position: relative;
+    z-index: 1;
+    font-size: 14px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--color-text-secondary);
+    margin-bottom: 8px;
+
+    @include respond(mobile) {
+      font-size: 12px;
+      letter-spacing: 0.2em;
+      color: #3a3a3a;
+    }
+  }
 
   &__title {
     position: relative;
     z-index: 1;
-    font-size: 40px;
-    font-weight: 400;
+    font-size: clamp(48px, 6vw, 96px);
+    font-weight: 500;
+    line-height: 1;
+    margin-bottom: 20px;
 
     @include respond(mobile) {
-      font-size: 28px;
+      font-size: 48px;
       text-align: center;
-      font-weight: 800;
+      font-weight: 600;
     }
   }
 
@@ -82,7 +103,7 @@
     justify-content: space-between;
     gap: 20px;
     background-color: white;
-    color: black;
+    color: var(--color-text-main);
     padding: 10px 30px;
     border-radius: 10px;
     border: none;
@@ -91,6 +112,15 @@
     cursor: pointer;
     position: relative;
     z-index: 1;
+    background: var(--color-glass-light);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+
+    [data-theme='dark'] &:hover {
+      background: var(--color-glass-pill);
+      border-color: rgba(255, 255, 255, 0.35);
+    }
 
     @include respond(mobile) {
       margin-top: 20px;
