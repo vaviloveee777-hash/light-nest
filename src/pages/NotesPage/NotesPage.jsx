@@ -34,7 +34,6 @@ const NotesPage = () => {
       content: noteData.content,
       isFavorite: noteData.isFavorite,
       date: new Date().toLocaleDateString(),
-      isPinned: false,
       isArchived: false,
     }
     setNotes([...notes, newNotes])
@@ -46,11 +45,6 @@ const NotesPage = () => {
       ? { ...note, isFavorite: !note.isFavorite } : note))
   }
 
-  const togglePinned = (id) => {
-    setNotes(notes.map((note) => note.id === id
-      ? { ...note, isPinned: !note.isPinned } : note))
-  }
-
   const toggleArchived = (id) => {
     setNotes(notes.map((note) => note.id === id
       ? { ...note, isArchived: !note.isArchived } : note))
@@ -60,15 +54,13 @@ const NotesPage = () => {
     setNotes(notes.filter(note => note.id !== id))
   }
 
-  const filteredNotes = notes
-    .filter(note => {
-      if (activeFilter === 'all') return note.isArchived === false && note.isFavorite === false
-      if (activeFilter  === 'favorite') return note.isFavorite === true
-      if (activeFilter  === 'archived') return note.isArchived === true
-      if (activeFilter === 'recent') return (Date.now() - note.id) < (3 * 24 * 60 * 60 * 1000)
-      return true
-    })
-    .sort((a, b) => Number(b.isPinned) - Number(a.isPinned))
+  const filteredNotes = notes.filter(note => {
+    if (activeFilter === 'all') return note.isArchived === false
+    if (activeFilter === 'favorite') return note.isFavorite === true
+    if (activeFilter === 'archived') return note.isArchived === true
+    if (activeFilter === 'recent') return (Date.now() - note.id) < (3 * 24 * 60 * 60 * 1000)
+    return true
+  })
 
   const clearAllNotes = () => {
     setNotes([])
@@ -94,7 +86,6 @@ const NotesPage = () => {
           notes={filteredNotes}
           onDelete={deleteNote}
           onToggleFavorite={toggleFavorite}
-          onTogglePinned={togglePinned}
           onToggleArchived={toggleArchived}
         />
 
