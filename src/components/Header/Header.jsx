@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useLocation } from 'react-router-dom'
 import HeaderBrand from "@/components/Header/components/HeaderBrand.jsx";
 import HeaderActions from "@/components/Header/components/HeaderActions.jsx";
 import './Header.scss'
@@ -6,6 +7,9 @@ import './Header.scss'
 
 const Header = (props) => {
   const {} = props
+
+  const { pathname } = useLocation()
+  const isHome = pathname === '/'
 
   const [isOpen, setOpen] = useState(false)
 
@@ -20,7 +24,7 @@ const Header = (props) => {
 
 
   return (
-    <header className="header">
+    <header className={`header ${isHome ? 'header--glass' : ''}`}>
       <HeaderBrand isOpen={isOpen} />
       <HeaderActions isOpen={isOpen} setOpen={setOpen} />
     </header>

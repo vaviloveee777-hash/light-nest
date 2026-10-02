@@ -1,6 +1,6 @@
 import IconBadge from "@/components/shared/IconBadge/index.js";
 import HeaderNav from "@/components/Header/components/HeaderNav.jsx"
-import { Sun } from 'lucide-react'
+import { SunDim } from 'lucide-react'
 
 
 const HeaderBrand = (props) => {
@@ -12,7 +12,7 @@ const HeaderBrand = (props) => {
 
     <div className="header__brand">
       <IconBadge
-        icon={<Sun size={20} />}
+        icon={<SunDim size={24} strokeWidth={1.5} />}
         className="icon-badge--sun"
       />
       <div className="header__logo">
