@@ -4,6 +4,10 @@
 .summary-card {
   @include card;
   @include card-hover;
+  background: var(--color-card-glass);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--color-glass-border);
   padding: 24px;
   min-width: 200px;
   display: flex;
@@ -11,9 +15,10 @@
   gap: 8px;
 
   @media (max-width: 720px) {
-    padding: 14px;
-    gap: 6px;
+    padding: 20px;
+    gap: 2px;
     border-radius: $radius-md;
+    max-width: 200px;
   }
 
   @include respond(mobile) {
@@ -31,7 +36,16 @@
 
     @include respond(mobile) {
       gap: 2px;
+    }
 
+    .icon-badge {
+      background: var(--color-glass-light);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+
+      &:hover {
+        background: rgba(250, 223, 173, 0.6);
+      }
     }
 
     p {
@@ -93,11 +107,20 @@
 
   &__button {
     @include button-dark;
+    background: var(--color-glass-light);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
     margin-top: auto;
-    align-self: flex-start;
+    align-self: stretch;
+    justify-content: center;
     white-space: nowrap;
-    color: black;
+    color: var(--color-text-main);
     font-size: 14px;
+    [data-theme='dark'] &:hover {
+      background: var(--color-glass-pill);
+      border-color: rgba(255, 255, 255, 0.35);
+    }
 
     @media (max-width: 720px) {
       padding: 8px 12px;

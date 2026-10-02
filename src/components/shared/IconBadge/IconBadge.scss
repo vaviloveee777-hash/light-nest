@@ -1,7 +1,6 @@
 @use '@/styles/variables' as *;
 @use '@/styles/mixins' as *;
 
-
 .icon-badge {
   width: 38px;
   height: 38px;
@@ -10,12 +9,19 @@
   align-items: center;
   justify-content: center;
   background: var(--color-bg-white);
+  color: var(--color-text-main);
   border-radius: $radius-md;
   margin-right: 10px;
   margin-left: -10px;
 
   &:hover {
     background-color: #FADFAD;
+    color: #2e2d2b;
+  }
+
+  [data-theme='dark'] &:hover {
+    background-color: var(--color-glass-pill);
+    color: var(--color-text-main);
   }
 
   @include respond(mobile) {
