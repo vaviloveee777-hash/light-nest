@@ -2,13 +2,13 @@
 @use '@/styles/mixins' as *;
 
 .weather-page {
-  background: #F0E9E0;
+  background: var(--color-header-bg);
   min-height: 100vh;
   padding: 0 24px 60px;
   overflow-x: hidden;
 
   @media (max-width: 540px) {
-    padding: 20px 12px 40px;
+    padding: 0px 12px 40px;
   }
 
   &__top {
@@ -51,9 +51,9 @@
 .city-select {
   font-family: inherit;
   font-size: 14px;
-  color: #4a453e;
-  background: #fff;
-  border: 1px solid #e3dbcc;
+  color: var(--color-text-secondary);
+  background: var(--color-bg-white);
+  border: 1px solid var(--color-border);
   border-radius: 8px;
   padding: 8px 12px;
   cursor: pointer;
@@ -65,7 +65,7 @@
 
 .current-weather {
   position: relative;
-  background: #fff;
+  background: var(--color-bg-white);
   border-radius: 16px;
   padding: 28px;
   overflow: hidden;
@@ -97,7 +97,7 @@
 
   &__location {
     font-size: 14px;
-    color: #8a8175;
+    color: var(--color-text-secondary);
     margin-bottom: 8px;
   }
 
@@ -111,7 +111,7 @@
     font-family: $font-display;
     font-size: clamp(48px, 6vw, 72px);
     line-height: 1;
-    color: #2b2620;
+    color: var(--color-text-main);
   }
 
   &__condition {
@@ -122,12 +122,12 @@
 
   &__condition-text {
     font-size: 18px;
-    color: #2b2620;
+    color: var(--color-text-main);
   }
 
   &__feels {
     font-size: 14px;
-    color: #8a8175;
+    color: var(--color-text-secondary);
   }
 
   &__stats {
@@ -136,7 +136,7 @@
     gap: 28px;
     margin-top: 24px;
     padding-top: 20px;
-    border-top: 1px solid #ece5d8;
+    border-top: 1px solid var(--color-border);
   }
 
   &__stat {
@@ -147,18 +147,18 @@
 
   &__stat-label {
     font-size: 12px;
-    color: #8a8175;
+    color: var(--color-text-secondary);
   }
 
   &__stat-value {
     font-size: 14px;
-    color: #2b2620;
+    color: var(--color-text-main);
     font-weight: 600;
   }
 }
 
 .hourly-forecast {
-  background: #fff;
+  background: var(--color-bg-white);
   border-radius: 16px;
   padding: 24px;
 
@@ -167,10 +167,11 @@
     max-width: 100%;
     box-sizing: border-box;
   }
+
   &__title {
     font-size: 15px;
     font-weight: 600;
-    color: #2b2620;
+    color: var(--color-text-main);
     margin-bottom: 16px;
   }
 
@@ -200,13 +201,13 @@
     }
 
     &--now {
-      background: #F0E9E0;
+      background: var(--color-bg-card);
     }
   }
 
   &__time {
     font-size: 13px;
-    color: #8a8175;
+    color: var(--color-text-secondary);
   }
 
   &__icon {
@@ -216,12 +217,12 @@
   &__temp {
     font-size: 16px;
     font-weight: 600;
-    color: #2b2620;
+    color: var(--color-text-main);
   }
 }
 
 .daily-forecast {
-  background: #fff;
+  background: var(--color-bg-white);
   border-radius: 16px;
   padding: 24px;
 
@@ -234,7 +235,7 @@
   &__title {
     font-size: 15px;
     font-weight: 600;
-    color: #2b2620;
+    color: var(--color-text-main);
     margin-bottom: 16px;
   }
 
@@ -244,7 +245,7 @@
     align-items: center;
     gap: 16px;
     padding: 12px 0;
-    border-bottom: 1px solid #ece5d8;
+    border-bottom: 1px solid var(--color-border);
 
     &:last-child {
       border-bottom: none;
@@ -257,7 +258,7 @@
 
   &__day {
     font-size: 14px;
-    color: #2b2620;
+    color: var(--color-text-main);
   }
 
   &__bar {
@@ -268,25 +269,25 @@
 
   &__min {
     font-size: 13px;
-    color: #8a8175;
+    color: var(--color-text-secondary);
   }
 
   &__max {
     font-size: 13px;
-    color: #2b2620;
+    color: var(--color-text-main);
     font-weight: 600;
   }
 
   &__track {
     flex: 1;
     height: 3px;
-    background: #ece5d8;
+    background: var(--color-border);
     border-radius: 2px;
   }
 
   &__label {
     font-size: 13px;
-    color: #8a8175;
+    color: var(--color-text-secondary);
     text-align: right;
   }
 
@@ -322,7 +323,7 @@
 }
 
 .today-details {
-  background: #fff;
+  background: var(--color-bg-white);
   border-radius: 16px;
   padding: 24px;
 
@@ -333,7 +334,7 @@
   &__title {
     font-size: 15px;
     font-weight: 600;
-    color: #2b2620;
+    color: var(--color-text-main);
     margin-bottom: 16px;
   }
 
@@ -343,7 +344,7 @@
     align-items: center;
     padding: 10px 0;
     font-size: 14px;
-    color: #4a453e;
+    color: var(--color-text-secondary);
     flex-wrap: wrap;
     gap: 4px;
   }
@@ -355,21 +356,20 @@
   }
 
   &__value {
-    color: #2b2620;
+    color: var(--color-text-main);
     font-weight: 600;
   }
 }
 
 .air-quality {
-  background: #fff;
+  background: var(--color-bg-white);
   border-radius: 16px;
   padding: 24px;
-
 
   &__title {
     font-size: 15px;
     font-weight: 600;
-    color: #2b2620;
+    color: var(--color-text-main);
     margin-bottom: 16px;
   }
 
@@ -395,7 +395,7 @@
 
   &__gauge-track {
     fill: none;
-    stroke: #ece5d8;
+    stroke: var(--color-border);
     stroke-width: 10;
   }
 
@@ -419,19 +419,19 @@
   &__gauge-value {
     font-size: 28px;
     font-weight: 700;
-    color: #2b2620;
+    color: var(--color-text-main);
     line-height: 1;
   }
 
   &__gauge-label {
     font-size: 12px;
-    color: #8a8175;
+    color: var(--color-text-secondary);
     margin-top: 2px;
   }
 
   &__description {
     font-size: 13px;
-    color: #8a8175;
+    color: var(--color-text-secondary);
     line-height: 1.5;
     flex: 1;
     min-width: 0;
@@ -442,23 +442,23 @@
     justify-content: space-between;
     align-items: center;
     padding-top: 16px;
-    border-top: 1px solid #ece5d8;
+    border-top: 1px solid var(--color-border);
     font-size: 14px;
   }
 
   &__pollutant-label {
-    color: #4a453e;
+    color: var(--color-text-secondary);
   }
 
   &__pollutant-value {
-    color: #2b2620;
+    color: var(--color-text-main);
     font-weight: 600;
   }
 }
 
 .weather-loading {
   font-size: 14px;
-  color: #8a8175;
+  color: var(--color-text-secondary);
   padding: 24px;
 }
 
@@ -467,7 +467,7 @@
   width: auto;
   margin: 0 -24px;
   min-height: 420px;
-  padding: 40px 48px;
+  padding: 100px 48px 40px;
   overflow: hidden;
   background-image: url('@/assets/background-weather.png');
   background-size: cover;
@@ -476,7 +476,12 @@
   @include respond(mobile) {
     background-image: url('@/assets/background-weather.png');
     min-height: 320px;
-    padding: 24px;
+    padding: 90px 24px 24px;
+  }
+
+  [data-theme='dark'] & {
+    background-color: #5a5550;
+    background-blend-mode: multiply;
   }
 
   &::before {
@@ -489,6 +494,15 @@
       rgba(245, 242, 236, 0.7) 30%,
       rgba(245, 242, 236, 0) 60%
     );
+
+    [data-theme='dark'] & {
+      background: linear-gradient(
+        90deg,
+        rgba(28, 27, 25, 0.92) 0%,
+        rgba(28, 27, 25, 0.8) 45%,
+        rgba(28, 27, 25, 0) 80%
+      );
+    }
   }
 
   &__content {
@@ -620,8 +634,9 @@
     color: var(--color-text-main);
   }
 }
+
 .precipitation {
-  background: #fff;
+  background: var(--color-bg-white);
   border-radius: 16px;
   padding: 24px;
 
@@ -631,7 +646,7 @@
     gap: 6px;
     font-size: 15px;
     font-weight: 600;
-    color: #2b2620;
+    color: var(--color-text-main);
     margin-bottom: 16px;
   }
 
@@ -647,13 +662,13 @@
     align-items: center;
     gap: 6px;
     font-size: 14px;
-    color: #4a453e;
+    color: var(--color-text-secondary);
   }
 
   &__value {
     font-size: 14px;
     font-weight: 600;
-    color: #2b2620;
+    color: var(--color-text-main);
   }
 
   &__chart {
@@ -683,7 +698,6 @@
 
   &__time {
     font-size: 11px;
-    color: #8a8175;
+    color: var(--color-text-secondary);
   }
 }
-
