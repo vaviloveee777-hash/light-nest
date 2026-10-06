@@ -18,8 +18,7 @@ const WeatherHero = (props) => {
   const stats = [
     { icon: Droplet, label: "Humidity", value: `${humidity}%` },
     { icon: Wind, label: "Wind", value: `${wind} km/h` },
-    { icon: Eye, label: "Visibility", value: `${visibility} km` },
-  ]
+    { icon: Eye, label: "Visibility", value: visibility != null ? `${Math.round(visibility / 1000)} km` : "—" },  ]
   const Icon = conditionIcon
 
   return (
