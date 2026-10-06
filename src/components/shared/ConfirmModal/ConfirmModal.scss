@@ -12,10 +12,12 @@
     z-index: 300;
     padding: 20px;
     animation: confirm-form-fade-in 0.15s ease;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
   }
 
   &__modal {
-    background: var(--color-bg-white, #fff);
+    background: var(--color-card-glass);
     border-radius: $radius-md;
     padding: 28px;
     width: 100%;
@@ -25,12 +27,15 @@
     gap: 12px;
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
     animation: confirm-form-pop-in 0.18s ease;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--color-glass-border);
   }
 
   &__modal-heading {
     font-size: 18px;
     font-weight: 600;
-    color: #1E1E1E;
+    color: var(--color-text-main);
     margin: 0;
   }
 
@@ -47,17 +52,17 @@
   }
 
   &__modal-button-cancel {
-    border: none;
-    background: var(--color-bg, #F0E9E0);
-    color: #1E1E1E;
+    background: var(--color-glass-pill);
+    color: var(--color-text-main);
     padding: 10px 20px;
     border-radius: $radius-md;
+    border: 1px solid var(--color-glass-border);
     font-size: 14px;
     cursor: pointer;
     transition: background 0.15s ease;
 
     &:hover {
-      background: #E6DDCF;
+      background: var(--color-border);
     }
   }
 
