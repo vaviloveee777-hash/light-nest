@@ -161,7 +161,7 @@
     font-size: 14px;
     white-space: nowrap;
 
-    @media (max-width: 720px) {
+    @media (max-width: 900px) {
       .header__user-name {
         display: none;
       }
@@ -210,7 +210,7 @@
     }
   }
 
-  @media (min-width: 651px) and (max-width: 720px) {
+  @media (min-width: 651px) and (max-width: 900px) {
     &__nav {
       gap: 0;
       margin-right: 0;
